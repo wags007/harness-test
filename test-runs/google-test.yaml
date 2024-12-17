@@ -1,0 +1,18 @@
+# k6-resource.yml
+
+apiVersion: k6.io/v1alpha1
+kind: TestRun
+metadata:
+  name: google-test
+spec:
+  parallelism: 1
+  script:
+    configMap:
+      name: google-test
+      file: google.js
+  separate: false
+  runner:
+    image: grafana/k6:master-with-browser 
+    metadata:
+      labels:
+        testname: k6-google-test
